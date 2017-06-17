@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http,RequestOptions,Headers} from '@angular/http';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class AuthService {
@@ -9,6 +10,7 @@ export class AuthService {
   constructor(http:Http) { 
     this.http = http;
   }
+
 
   //Serverless logIn function dependent on browser's localstorage.
   login(email:HTMLInputElement,password:HTMLInputElement,role:HTMLSelectElement){

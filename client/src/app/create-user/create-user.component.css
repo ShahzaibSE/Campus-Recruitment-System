@@ -1,0 +1,18 @@
+.submit_btn{
+    padding-left:120px;
+    padding-right:120px;
+}
+
+#component_title{
+    margin-left: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: lightskyblue;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    width: 450px;
+}
