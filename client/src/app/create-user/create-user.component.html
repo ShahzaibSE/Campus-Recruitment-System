@@ -19,7 +19,7 @@
 </div>-->
 
 <md-card>
-  <div class="col s6 offset-s6">
+  <div class="col s6 l6 offset-s6 offset-l6">
    <h1 id="component_title">Create User</h1>
   </div>
 
@@ -49,6 +49,12 @@
       </div>-->
       <div class="row">
         <div class="input-field col s12">
+          <input id="email" type="email" class="validate" required #email>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
           <input id="password" type="password" class="validate" required #password>
           <label for="password">Password</label>
         </div>
@@ -57,12 +63,6 @@
         <div class="input-field col s12">
           <input id="confirm_password" type="password" class="validate" required #confirm_password>
           <label for="confirm_password">Confirm Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate" required #email>
-          <label for="email">Email</label>
         </div>
       </div>
       <!--<div class="row">
