@@ -21,10 +21,21 @@ export class CreateUserComponent implements OnInit {
 
   constructor(db:AngularFireDatabase) { 
      this.users = db.list('/users');
+     console.log("Users");
+     console.log();
+     this.users.subscribe(data=>{
+       console.log(data.length);
+
+       for(let i=0; i<data.length; i++){
+         console.log(data[i]);
+       }
+     })
+    //  this.getAllUsers();∂∂
+     
   }
 
   ngOnInit() {
-    this.getAllData();
+    // this.getAllUsers();
   }
 
   createUser(firstname,lastname,password,
@@ -96,7 +107,7 @@ export class CreateUserComponent implements OnInit {
    
   }
 
-  getAllData(){
+  getAllUsers(){
     var af:AngularFireDatabase;
     const queryObservable = af.list('/items', {
           query: {
