@@ -1,0 +1,16 @@
+.md_card_padding {
+    /*card padding css*/
+}
+
+.input_container {
+    display : inline-block
+}
+
+.login_image {
+    width : 300px;
+    /* height : 300px; */
+}
+
+#login_form {
+    width : 200px;
+}

@@ -1,0 +1,23 @@
+<!-- <p>
+  formbuilder works!
+</p> -->
+<md-card>
+  <form  [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <md-input-container>
+      <input mdInput type="text" placeholder="First Name" [formControl]="myForm.controls['firstname']" ngModel>
+    </md-input-container><br/>
+    <md-input-container>
+      <input mdInput type="text" placeholder="Last Name" [formControl]="myForm.controls['lastname']" ngModel>
+    </md-input-container><br/>
+    <md-input-container>
+      <input mdInput type="text" placeholder="Zip" [formControl]="myForm.controls['zip']" ngModel>
+    </md-input-container><br/>
+    <div>
+      <button md-raised-button md-primary>Submit</button>
+    </div>
+  </form>
+</md-card>
+
+<md-card style="margin-top:10px" *ngIf="myForm.controls['lastname'].hasError('required')">
+  <p style="color:red">Please fill last name</p>
+</md-card>

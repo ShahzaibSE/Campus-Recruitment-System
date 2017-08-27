@@ -1,0 +1,14 @@
+<!-- <md-card>
+
+</md-card> -->
+
+<!-- <md-card>   -->
+ <!-- <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">  -->
+ <form (ngSubmit)="onSubmit()"> 
+  <md-input-container>
+    <input mdInput placeholder="SKU" id="sku" name="sku" value="" [formControl]="sku" ngModel>  <!--'name = sku' is the key  in form object-->
+    <!-- <input mdInput placeholder="SKU" id="sku" name="sku" value=""  ngModel>  'name = sku' is the key  in form object -->
+  </md-input-container>
+  <button md-raised-button md-primary>Submit</button>
+ </form>
+<!-- </md-card> -->

@@ -1,0 +1,25 @@
+<!-- <p>
+  formgroup works!
+</p> -->
+
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()"> 
+  <md-input-container>
+    <input mdInput placeholder="First Name" id="firstname" name="firstname" value="" formControlName="firstname" ngModel>  <!-- 'name = sku' is the key  in form object -->
+  </md-input-container><br/><br/>
+  <md-input-container>
+    <input mdInput placeholder="Last Name" id="lastname" name="lastname" value="" formControlName="lastname" ngModel>  <!-- 'name = sku' is the key  in form object -->
+  </md-input-container><br/><br/>
+  <md-input-container>
+    <input mdInput placeholder="Zip Code" id="zip" name="zip" value="" formControlName="zip" ngModel>  <!-- 'name = sku' is the key  in form object -->
+  </md-input-container><br/><br/>
+  <div>
+   <button md-raised-button md-primary>Submit</button>
+  </div>
+ </form>
+
+ <p> First name : {{ formGroup.get('firstname').value }}</p>
+ <p> Last name : {{ formGroup.get('lastname').value }} </p>
+ <p> Zip Code : {{ formGroup.get('zip').value }} </p>
+
+ <br/>
+ <h3>Form group: {{ formGroup.value | json }}</h3>
