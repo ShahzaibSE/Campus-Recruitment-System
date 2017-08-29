@@ -3,7 +3,7 @@
 </p> -->
 <br/>
 <br/>
-<md-card class="col-lg-6 col-lg-offset-3">
+<md-card class="col-lg-6 col-lg-offset-3" *ngIf="!checkSession()">
  <div> 
   <div class="form_heading col-lg-offset-3">
     <img class="login_image" src="./assets/images/please-sign-in.png" alter="Sign In" />
@@ -17,14 +17,14 @@
       <md-input-container style="width:665px">
         <input mdInput placeholder="Password" type="password" #password [formControl]="loginForm.controls['password']"> <!-- Password -->
       </md-input-container><br/>
-      <md-select  placeholder="Your Role" style="width:665px;margin-top:10px" #role [formControl]="loginForm.controls['role']">  <!-- Role -->
+      <md-select [(ngModel)]="role_select_value"  id="role"  placeholder="Please select your role" style="width:665px;margin-top:10px" name="role" #Role [formControl]="loginForm.controls['role']">  <!-- Role -->
           <md-option value="None">None</md-option>
-          <md-option *ngFor="let role of roles"  value="role.name">{{role.name}}</md-option> 
+          <md-option *ngFor="let role of roles"  value="{{role.name}}">{{role.name}}</md-option> 
       </md-select><br/>
     </form>
   </div>
   <div style="margin-top:35px" class="col-lg-offset-3">
-    <button style="padding:0px 150px 0px 150px" md-button color="warn" (click)="logIn(email,password,role)">Sign In</button>
+    <button style="padding:0px 150px 0px 150px" md-button color="warn" (click)="logIn(email,password,Role)">Sign In</button>
   </div>
  </div>
 </md-card>

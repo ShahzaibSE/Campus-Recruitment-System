@@ -41,7 +41,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     MdInputModule, MdCardModule, NoopAnimationsModule,
     MdButtonModule, MdCheckboxModule, MdSelectModule
   ],
-  providers: [RoleGuardService],
+  providers: [RoleGuardService, AuthServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
