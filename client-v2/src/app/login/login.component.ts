@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   // formHide_flag: boolean;
 
-  role_select_value: any;
+  role_select_value: string;
 
   constructor(fb: FormBuilder, public Auth: AuthServiceService) {
     this.loginForm = fb.group({
@@ -48,11 +48,11 @@ export class LoginComponent implements OnInit {
     console.log(`Password : ${password.value}`);
     console.log(`Role : ${role.value}`);
     // console.log(`Role : ${role.selectedIndex}`);
-    // console.log(`Role : ${this.role_select_value.name}`);
+    console.log(`Role from ngModel : ${this.role_select_value}`);
     let credientials = {
       email : username.value,
       password : password.value,
-      role : role.value
+      // role : role.value
     };
     console.log(credientials);
     localStorage.setItem('username', JSON.stringify(credientials));

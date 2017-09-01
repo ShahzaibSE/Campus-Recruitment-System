@@ -19,7 +19,7 @@
       </md-input-container><br/>
       <md-select [(ngModel)]="role_select_value"  id="role"  placeholder="Please select your role" style="width:665px;margin-top:10px" name="role" #Role [formControl]="loginForm.controls['role']">  <!-- Role -->
           <md-option value="None">None</md-option>
-          <md-option *ngFor="let role of roles"  value="{{role.name}}">{{role.name}}</md-option> 
+          <md-option *ngFor="let role of roles"  [value]="role.name">{{role.name}}</md-option> 
       </md-select><br/>
     </form>
   </div>
