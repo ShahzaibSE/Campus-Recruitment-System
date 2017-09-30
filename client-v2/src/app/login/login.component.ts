@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
       email : username.value,
       password : password.value,
       // role : role.value
+      role : this.role_select_value
     };
     console.log(credientials);
     localStorage.setItem('username', JSON.stringify(credientials));

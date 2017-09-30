@@ -7,18 +7,32 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="./style.css" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <!-- <link href="styles.css" rel="stylesheet"> -->
 
   <!-- Bootstrap Theme & CSS -->
-  <link href="./assets/bootstrap/css/bootstrap.min.theme.css" rel="stylesheet" />
-  <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link href="assets/bootstrap/css/bootstrap.theme.min.css" rel="stylesheet" /> -->
+  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
  
   <!-- Bootstrap JS -->
-  <script src="./assets/jquery-3.2.1.js"></script>
-  <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/jquery-3.2.1.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </head>
 <body>
   <app-root>Loading...</app-root>
+
+  <!-- Service Worker --> 
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+        // Registration was successful
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }).catch(function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    }
+  </script>
 </body>
 </html>
