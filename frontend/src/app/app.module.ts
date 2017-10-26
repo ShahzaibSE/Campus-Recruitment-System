@@ -23,6 +23,9 @@ import { StudentInfoComponent } from './student-info/student-info.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { CommonContainerDirective } from './common-container.directive';
+import { WorkbenchComponent } from './workbench/workbench.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     CompanyInfoComponent,
     NavbarComponent,
     SidemenuComponent,
+    CommonContainerDirective,
+    WorkbenchComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
