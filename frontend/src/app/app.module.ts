@@ -22,6 +22,7 @@ import { AuthServiceService } from './auth-service.service';
 import { StudentInfoComponent } from './student-info/student-info.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     StudentInfoComponent,
     CompanyInfoComponent,
-    NavbarComponent
+    NavbarComponent,
+    SidemenuComponent,
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,

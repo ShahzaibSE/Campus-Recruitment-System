@@ -51,12 +51,12 @@ class studentController extends Controller
      */
     public function store(Request $request)
     {
-        csrf_field();
+//        csrf_field();
         $student = new student;
 
         $student->firstname = $request->firstname;
         $student->lastname = $request->lastname;
-        $student->email - $request->email;
+//        $student->email - $request->email;
         $student->gender = $request->gender;
         $student->age = $request->age;
         $student->city = $request-> city;
