@@ -23,9 +23,14 @@ import { StudentInfoComponent } from './student-info/student-info.component';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { CommonContainerDirective } from './common-container.directive';
+// import { CommonContainerDirective } from './common-container.directive';
 import { WorkbenchComponent } from './workbench/workbench.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DynamicCompDirectiveDirective } from './dyniamic-component-loader/dynamic-comp-directive.directive';
+import { FullLayoutComponent } from './full-layout/full-layout.component';
+
+// Service.
+import { DynamicComponentService } from './shared/services/dynamic-component.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +43,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CompanyInfoComponent,
     NavbarComponent,
     SidemenuComponent,
-    CommonContainerDirective,
     WorkbenchComponent,
     DashboardComponent,
+    DynamicCompDirectiveDirective,
+    FullLayoutComponent,
   ],
   imports: [
     BrowserModule, BrowserAnimationsModule,
@@ -49,7 +55,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MdInputModule, MdCardModule, NoopAnimationsModule,
     MdButtonModule, MdCheckboxModule, MdSelectModule
   ],
-  providers: [RoleGuardService, AuthServiceService],
+  providers: [RoleGuardService, AuthServiceService, DynamicComponentService],
+  entryComponents: [CompanyInfoComponent, StudentInfoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ComponentFactory, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-workbench',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkbenchComponent implements OnInit {
 
-  constructor() { }
+  constructor(public componentFactoryResolver: ComponentFactoryResolver, componentFactory: ComponentFactory<any>,
+              public viewContainerRef: ViewContainerRef) { }
 
   ngOnInit() {
+  }
+
+  loadComponent() {
+  //  let componentFactory = componentFactory.
   }
 
 }
