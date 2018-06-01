@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    this.service.setRootViewContainerRef(this.viewContainerRef)
-    this.service.addDynamicComponent()
+    // this.service.setRootViewContainerRef(this.viewContainerRef)
+    // this.service.addDynamicComponent()
   }
 }

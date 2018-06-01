@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { 
+  Component, 
+  Inject,
+  ViewContainerRef, ViewChild, OnInit
+} from '@angular/core'
+
+// Service
+import { DynamicComponentService } from './../shared/services/dynamic-component.service';
+
 
 @Component({
   selector: 'app-sidemenu',
@@ -7,9 +15,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidemenuComponent implements OnInit {
 
-  constructor() { }
+  public service: any;
+
+  @ViewChild('dynamic', { 
+    read: ViewContainerRef 
+  }) viewContainerRef: ViewContainerRef;
+
+  constructor(@Inject(DynamicComponentService) service) { 
+    this.service = service;
+  }
 
   ngOnInit() {
+    this.componentLoader();
+  }
+
+  public componentLoader() {
+    this.service.setRootViewContainerRef(this.viewContainerRef)
+    this.service.addDynamicComponent();
   }
 
 }
