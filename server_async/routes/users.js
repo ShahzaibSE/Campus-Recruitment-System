@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 // router.get('/user', userController.user_CRUD.selectall);
 // router.get('/user', userController.selectall);
-router.get('/user', userController.selectAll);
+router.get('/user', userController.selectall);
+router.post('/user', userController.add);
 
 module.exports = router;
