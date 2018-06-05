@@ -102,18 +102,62 @@ exports.add = async function (req,res) {
     }
 }
 
-exports.user_CRUD = {
-    selectall : async (req,res) => {
-        req.headers.type = "test API";
-        var result = await [1, 2, 3, 4, 5].map( (element) => {
-            return element * 2;
+exports.update = async function(req,res) {
+    let params = req.body;
+    let userId = req.params.userid; 
+    try {
+     await userModel.findByIdAndUpdate(userId, {$set : params});
+     res.send({
+         status: true,
+         resCode : 200,
+         isError : false,
+         message : "Data updated successfully"
+     });
+    }
+    catch(err) {
+        res.send({
+            status: false,
+            resCode : 500,
+            isError : true,
+            message : "Internal server error"
         });
-            res.send({
-                status : true,
-                resCode : 200,
-                isError: false,
-                message : "Data succesfully found",
-                data : result
-            });
+    }
+    finally {
+        res.send({
+            status : false,
+            resCode : 503,
+            isError: false,
+            message : "Service unavailable"
+        });
+    }
+}
+
+exports.delete = async function(req,res) {
+    let params = req.body;
+    try {
+        let user = userModel.findOne({ name: params.name });
+        await userModel.remove({_id: user._id});
+        res.send({
+            status : true,
+            resCode: 200,
+            isError : false,
+            message : "Data removed successfully"
+        });
+    }
+    catch(err) {
+        res.send({
+            status: false,
+            resCode : 500,
+            isError : true,
+            message : "Internal server error"
+        });
+    }
+    finally {
+        res.send({
+            status : false,
+            resCode : 503,
+            isError: false,
+            message : "Service unavailable"
+        });
     }
 }

@@ -13,5 +13,7 @@ router.get('/', function(req, res, next) {
 // router.get('/user', userController.selectall);
 router.get('/user', userController.selectall);
 router.post('/user', userController.add);
+router.put('/user/:userid', userController.update);
+router.delete('/user', userController.delete);
 
 module.exports = router;
