@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const studentModel = require('./dbInjector').dataModels.student;
+const userModel = require('./dbInjector').dataModels.user;
 
 exports.selectall = async function (req, res) { // Search user or get all users.
     var body = req.body;
@@ -50,6 +51,7 @@ exports.add = async function (req,res) {
     try {
         let user = await studentModel.findOne({ name: params.name });
         // If user already exists.
+        let user = await userModel.findOne({ name: params.name });
         if (user) {
             res.send({
                 status: true,
