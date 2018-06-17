@@ -1,31 +1,16 @@
 'use strict'
 
 const mongoose = require('mongoose');
+const companyModel = require('./dbInjector').dataModels.company;
 const userModel = require('./dbInjector').dataModels.user;
-
-// Test Code.
-// exports.selectall =  async function (req,res) { 
-//     req.headers.type = "test API";
-//     var result = await [1, 2, 3, 4, 5].map( (element) => {
-//         return element * 2;
-//     });
-//     res.send({
-//         status : true,
-//         resCode : 200,
-//         isError: false,
-//         message : "Data succesfully found",
-//         data : result, 
-//         headers : req.headers.type
-//     });
-// }
 
 exports.selectall = async function (req, res) { // Search user or get all users.
     var body = req.body;
     var query = req.query;
     // Query.
     try {
-        if (query.userId) {
-            let user = await userModel.findOne({ _id: query.userId });
+        if (query.studentId) {
+            let user = await companyModel.findOne({ _id: query.studentId });
             res.send({
                 status : true,
                 resCode : 200,
@@ -33,7 +18,7 @@ exports.selectall = async function (req, res) { // Search user or get all users.
                 message : "Data found successfully"
             });
         } else if (!query.userId){
-            var userList = await userModel.find({});
+            var userList = await companyModel.find({});
             res.send({
                 status: true,
                 resCode : 200,
@@ -64,7 +49,7 @@ exports.selectall = async function (req, res) { // Search user or get all users.
 exports.add = async function (req,res) {
     var params = req.body;
     try {
-        let user = await userModel.findOne({ name: params.name });
+        let user = await companyModel.findOne({ name: params.name });
         // If user already exists.
         if (user) {
             res.send({
@@ -74,7 +59,7 @@ exports.add = async function (req,res) {
                 message : "User already exists"
             });
         } else {
-            let newUser = new userModel({ name: params.name, email: params.email, password: params.password });
+            let newUser = new companyModel({ name: params.name, email: params.email, password: params.password });
             await newUser.save();
             res.send({
                 status : true,
@@ -104,9 +89,9 @@ exports.add = async function (req,res) {
 
 exports.update = async function(req,res) {
     let params = req.body;
-    let userId = req.params.userid; 
+    let studentId = req.params.studentid; 
     try {
-     await userModel.findByIdAndUpdate(userId, {$set : params});
+     await companyModel.findByIdAndUpdate(studentId, {$set : params});
      res.send({
          status: true,
          resCode : 200,
@@ -123,6 +108,7 @@ exports.update = async function(req,res) {
         });
     }
     finally {
+        console.log("Student record updated");
         res.send({
             status : false,
             resCode : 503,
@@ -135,8 +121,8 @@ exports.update = async function(req,res) {
 exports.delete = async function(req,res) {
     let params = req.body;
     try {
-        let user = userModel.findOne({ name: params.name });
-        await userModel.remove({_id: user._id});
+        let user = companyModel.findOne({ name: params.name });
+        await companyModel.remove({_id: user._id});
         res.send({
             status : true,
             resCode: 200,
@@ -160,8 +146,4 @@ exports.delete = async function(req,res) {
             message : "Service unavailable"
         });
     }
-}
-
-exports.signin = async function(req, res) {
-    
 }
