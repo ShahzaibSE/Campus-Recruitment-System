@@ -8,5 +8,6 @@ exports.dataModels = {
     user:dbModels.user(),
     company:dbModels.company(),
     student:dbModels.student(),
+    role: dbModels.roles()
 }
 

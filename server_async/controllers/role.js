@@ -2,30 +2,30 @@
 
 const mongoose = require('mongoose');
 const studentModel = require('./dbInjector').dataModels.student;
-const userModel = require('./dbInjector').dataModels.user;
+const roleModel = require('./dbInjector').dataModels.user;
 
 exports.selectall = async function (req, res) { // Search user or get all users.
     var body = req.body;
     var query = req.query;
     // Query.
     try {
-        if (query.studentId) {
-            let student = await studentModel.findOne({ _id: query.studentId });
+        if (query.roleId) {
+            let role = await studentModel.findOne({ _id: query.roleId });
             res.send({
                 status : true,
                 resCode : 200,
                 isError : false,
                 message : "Data found successfully",
-                data: student
+                data: role
             });
         } else if (!query.userId){
-            var studentList = await studentModel.find({});
+            var roleList = await studentModel.find({});
             res.send({
                 status: true,
                 resCode : 200,
                 isError: false,
                 message : "Data found successfully",
-                data : studentList
+                data : roleList
             });
         }
     }
@@ -52,22 +52,21 @@ exports.add = async function (req,res) {
     try {
         let user = await studentModel.findOne({ name: params.name });
         // If user already exists.
-        let user = await userModel.findOne({ name: params.name });
         if (user) {
             res.send({
                 status: true,
                 resCode: 403,
                 isError : false,
-                message : "Student already exists"
+                message : "Role already exists"
             });
         } else {
-            let newStudent = new studentModel({ name: params.name, email: params.email, password: params.password });
-            await newStudent.save();
+            let newRole = new studentModel({ name: params.name });
+            await newRole.save();
             res.send({
                 status : true,
                 resCode : 200,
                 isError : false,
-                message : "Student created successfully" 
+                message : "Role created successfully" 
             });
         }
     }
@@ -91,9 +90,9 @@ exports.add = async function (req,res) {
 
 exports.update = async function(req,res) {
     let params = req.body;
-    let studentId = req.params.studentid; 
+    let roleId = req.params.roleid; 
     try {
-     await studentModel.findByIdAndUpdate(studentId, {$set : params});
+     await roleModel.findByIdAndUpdate(roleId, {$set : params});
      res.send({
          status: true,
          resCode : 200,
@@ -123,8 +122,8 @@ exports.update = async function(req,res) {
 exports.delete = async function(req,res) {
     let params = req.body;
     try {
-        let user = studentModel.findOne({ name: params.name });
-        await studentModel.remove({_id: user._id});
+        let user = roleModel.findOne({ name: params.name });
+        await roleModel.remove({_id: user._id});
         res.send({
             status : true,
             resCode: 200,
