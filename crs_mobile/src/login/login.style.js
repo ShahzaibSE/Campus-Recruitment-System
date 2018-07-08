@@ -9,6 +9,7 @@ exports.loginStyles = StyleSheet.create({
         justifyContent : 'center',
         marginLeft: 40,
         marginRight: 10,
+        flex : 1
     },
     label : {
         fontFamily : 'sans-serif',
@@ -17,6 +18,7 @@ exports.loginStyles = StyleSheet.create({
     },
     textInput: {
         marginBottom : 10,  
+        borderRadius : 3,
         // width : 5,
         flex : 1,
         marginLeft : 5,
@@ -24,6 +26,9 @@ exports.loginStyles = StyleSheet.create({
         textAlign : "center"
     },
     button : {
-        marginTop: 7
+        marginTop: 7,
+        backgroundColor: 'lightgreen',
+        color : 'white',
+        borderRaidus : 2
     }
 });

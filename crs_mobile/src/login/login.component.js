@@ -6,6 +6,9 @@ import { View, Text, TextInput, Button } from 'react-native';
 // Style
 import { loginStyles } from './login.style';
 
+// Components.
+import { DashboardComponent } from './../dashboard/dashboard.component';
+
 export class LoginComponent extends Component {
     constructor() {
         super();
