@@ -10,6 +10,7 @@ import { loginStyles } from './login.style';
 import { DashboardComponent } from './../dashboard/dashboard.component';
 
 export class LoginComponent extends Component {
+    loginToken = null;
     constructor() {
         super();
         this.state = { email : "Enter your email e.g: shahzaib@gmail.com",
@@ -17,18 +18,27 @@ export class LoginComponent extends Component {
     }
 
     render() {
-        return(
-            <View style={loginStyles.view_container}>
-                <TextInput style={loginStyles.textInput} placeholder="Enter your email e.g: shahzaib@gmail.com" style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                           onChangeText={(email) => this.setState({email})}
-                           value={this.state.text}/>
-                <Text></Text>           
-                <TextInput style={loginStyles.textInput} placeholder="Enter your password" style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                           onChangeText={(password) => this.setState({password})}
-                           value={this.state.text}/>
-                <Button style={loginStyles.button} onPress={()=>{console.log('Button pressed!')}} title="Sign In" color="#841584" 
-                        accessibilityLabel="Do you want to log In?" />           
-            </View>
-        );
+        if(loginToken) {
+            return (
+                <DashboardComponent/>
+            );
+        } else if(!loginToken) {
+            return(
+                <View> 
+                     <View style={loginStyles.view_container}>
+                         <TextInput style={loginStyles.textInput} placeholder="Enter your email e.g: shahzaib@gmail.com" style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                                 onChangeText={(email) => this.setState({email})}
+                                 value={this.state.text}/>
+                         <Text></Text>           
+                         <TextInput style={loginStyles.textInput} placeholder="Enter your password" style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+                                 onChangeText={(password) => this.setState({password})}
+                                 value={this.state.text}/>
+                         <Button style={loginStyles.button} onPress={()=>{console.log('Button pressed!')}} title="Sign In" color="#841584" 
+                                 accessibilityLabel="Do you want to log In?" />           
+                     </View>
+                     <DashboardComponent/>
+                 </View>
+             );
+        }
     }
 }
