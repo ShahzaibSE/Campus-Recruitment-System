@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const userModel = require('./dbInjector').dataModels.user;
+const jwt = require('jsonwebtoken');
 
 // Test Code.
 // exports.selectall =  async function (req,res) { 
@@ -163,5 +164,41 @@ exports.delete = async function(req,res) {
 }
 
 exports.signin = async function(req, res) {
-    
+    var params = req.body;
+    const jwttoken = jwt.sign(params, 'batman');
+    try {
+        let user = await userModel.findOne({ email: body.email, password: body.password });
+        // If user exists then logIn.
+        if (user) {
+            res.send({
+                status : true,
+                resCode : 200,
+                isError : false,
+                message : "User logged In successfully.",
+                at : jwttoken
+            });
+        } else if (!user) {
+            let newUser = new userModel({ name: params.name, email: params.email, password: params.password });
+            await newUser.save();
+            res.send({
+                status : true,
+                resCode : 200,
+                isError : false,
+                message : "User created successfully" 
+            });
+        }
+
+    }
+    catch(err) {
+        console.log(err);
+        throw err;
+    }
+    finally{
+        res.send({
+            status : false,
+            resCode : 503,
+            isError: false,
+            message : "Service unavailable"
+        });
+    }
 }
